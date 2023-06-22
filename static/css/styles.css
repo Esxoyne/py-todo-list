@@ -1,3 +1,11 @@
 html {
     margin: 20px;
 }
+
+.link-to-page {
+    float: right;
+}
+
+.deadline {
+    color: #b55c5c;
+}

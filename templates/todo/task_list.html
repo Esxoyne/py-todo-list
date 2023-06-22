@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>
-    TODO list
+    <strong>TODO list</strong>
     <a href="{% url "todo:task-create" %}" class="btn btn-primary link-to-page">
       Add task
     </a>
@@ -36,17 +36,17 @@
     <p>
       Created: {{ task.created_time }}
       {% if task.deadline %}
-      <span class="text-danger">Deadline: {{ task.deadline }}</span>
+      <span class="deadline">Deadline: {{ task.deadline }}</span>
       {% endif %}
     </p>
-    <h4 class="text-muted mb-4">
+    <h5 class="text-muted mb-4">
       Tags: 
       {% for tag in task.tags.all %}
         {{ tag.name}} 
       {% empty %}
           None
       {% endfor %}
-    </h4>
+    </h5>
     <a href="{% url "todo:task-update" pk=task.id %}" class="d-inline btn btn-secondary">Update</a>
     <a href="{% url "todo:task-delete" pk=task.id %}" class="d-inline btn btn-danger">Delete</a>
     <hr>

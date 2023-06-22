@@ -26,12 +26,12 @@
             {{ tag.name }}
           </td>
           <td>
-            <a class="btn btn-secondary" href="{% url "todo:tag-update" pk=tag.id %}">
+            <a class="btn btn-secondary d-inline" href="{% url "todo:tag-update" pk=tag.id %}">
               Update
             </a>
           </td>
           <td>
-            <a class="btn btn-danger" href="{% url "todo:tag-delete" pk=tag.id %}">
+            <a class="btn btn-danger d-inline" href="{% url "todo:tag-delete" pk=tag.id %}">
               Delete
             </a>
           </td>
