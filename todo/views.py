@@ -35,12 +35,12 @@ class TaskDeleteView(generic.DeleteView):
 class TaskToggleView(generic.View):
     def post(self, request, *args, **kwargs):
         task = get_object_or_404(Task, pk=kwargs["pk"])
-        
+
         task.done = not task.done
         task.save()
 
         return redirect(reverse("todo:index"))
-    
+
 
 class TagListView(generic.ListView):
     model = Tag

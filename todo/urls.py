@@ -43,17 +43,17 @@ urlpatterns = [
         name="tag-list",
     ),
     path(
-        "tags/create",
+        "tags/create/",
         TagCreateView.as_view(),
         name="tag-create",
     ),
     path(
-        "tags/<int:pk>/update",
+        "tags/<int:pk>/update/",
         TagUpdateView.as_view(),
         name="tag-update",
     ),
     path(
-        "tags/<int:pk>/delete",
+        "tags/<int:pk>/delete/",
         TagDeleteView.as_view(),
         name="tag-delete",
     ),
