@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    <strong>TODO list</strong>
+    <a href="{% url "todo:task-create" %}" class="btn btn-primary link-to-page">
+      Add task
+    </a>
+  </h1>
+  <br>
+
+  {% for task in task_list %}
+    <h4>
+      <strong>
+        {{ task.content }}
+        {% if task.done %}
+         <span class="text-success">Done</span>
+        {% else %} 
+         <span class="text-danger">Not done</span>
+        {% endif %}
+      </strong>
+      <form
+        method="post"
+        action="{% url "todo:task-toggle" pk=task.id %}"
+        class="d-inline"
+        novalidate
+      >
+        {% csrf_token %}
+        {% if task.done %}
+          <input type="submit" class="btn btn-secondary link-to-page" value="Undo" />
+        {% else %}
+          <input type="submit" class="btn btn-success link-to-page" value="Complete" />
+        {% endif %}
+      </form>
+    </h4>
+    <p>
+      Created: {{ task.created_time }}
+      {% if task.deadline %}
+      <span class="deadline">Deadline: {{ task.deadline }}</span>
+      {% endif %}
+    </p>
+    <h5 class="text-muted mb-4">
+      Tags: 
+      {% for tag in task.tags.all %}
+        {{ tag.name}} 
+      {% empty %}
+          None
+      {% endfor %}
+    </h5>
+    <a href="{% url "todo:task-update" pk=task.id %}" class="d-inline btn btn-secondary">Update</a>
+    <a href="{% url "todo:task-delete" pk=task.id %}" class="d-inline btn btn-danger">Delete</a>
+    <hr>
+  {% empty %}
+    <h3>No tasks</h3>
+  {% endfor %}
+{% endblock %}
